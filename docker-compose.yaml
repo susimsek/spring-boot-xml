@@ -1,0 +1,15 @@
+version: "3"
+services:
+  app:
+    build: .
+    container_name: app
+    restart: ${RESTART_POLICY}
+    environment:
+      - TZ
+      - SERVER_PORT
+      - API_BASE_PATH
+      - FILES_DIR
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - ./files:${FILES_DIR}:Z
